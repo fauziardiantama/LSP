@@ -13,29 +13,35 @@ class Controller extends BaseController
 
     public function index()
     {
-        //check if there's search query
+        // Mengecek apakah ada query pencarian
         if (request()->has('search')) {
+            // Jika ada, maka mencari mahasiswa berdasarkan nama
             $mahasiswas = Mahasiswa::where('nama', 'like', '%' . request('search') . '%')->orderBy('nim','desc')->get();
         } else {
+            // Jika tidak, maka menampilkan semua mahasiswa
             $mahasiswas = Mahasiswa::orderBy('nim','desc')->get();
         }
-        //get total mahasiswa
+        // Menghitung total mahasiswa
         $total = Mahasiswa::count();
-        //get total mahasiswa laki-laki
+        // Menghitung total mahasiswa laki-laki
         $totalMale = Mahasiswa::where('gender', 'L')->count();
-        //get total mahasiswa perempuan
+        // Menghitung total mahasiswa perempuan
         $totalFemale = Mahasiswa::where('gender', 'P')->count();
+        // Mengembalikan view home dengan data mahasiswa, total mahasiswa, total laki-laki, dan total perempuan
         return view('home', compact('mahasiswas', 'total', 'totalMale', 'totalFemale'));
     }
 
     public function admin()
     {
-        //check if there's "Edit" with value id mahasiswa
+        // Mengecek apakah ada request "edit" dengan nilai id mahasiswa
         $mahasiswa = null;
         if (request()->has('edit')) {
+            // Jika ada, maka mencari mahasiswa berdasarkan id
             $mahasiswa = Mahasiswa::find(request('edit'));
         }
+        // Mengambil semua data mahasiswa
         $mahasiswas = Mahasiswa::all();
+        // Mengembalikan view admin dengan data mahasiswa dan mahasiswa yang akan diedit (jika ada)
         return view('admin', compact('mahasiswas', 'mahasiswa'));
     }
 }

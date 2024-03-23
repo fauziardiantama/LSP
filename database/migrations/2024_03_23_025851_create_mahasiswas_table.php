@@ -7,27 +7,29 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi.
      */
     public function up(): void
     {
+        // Membuat tabel 'mahasiswas'
         Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nim')->unique();
-            $table->string('nama');
-            $table->text('alamat');
-            $table->date('tgl_lahir');
-            $table->enum('gender', ['L', 'P']);
-            $table->tinyInteger('usia')->unsigned();
-            $table->timestamps();
+            $table->id(); // Membuat kolom 'id' sebagai primary key
+            $table->string('nim')->unique(); // Membuat kolom 'nim' yang unik
+            $table->string('nama'); // Membuat kolom 'nama'
+            $table->text('alamat'); // Membuat kolom 'alamat'
+            $table->date('tgl_lahir'); // Membuat kolom 'tgl_lahir' dengan tipe data tanggal
+            $table->enum('gender', ['L', 'P']); // Membuat kolom 'gender' dengan nilai 'L' atau 'P'
+            $table->tinyInteger('usia')->unsigned(); // Membuat kolom 'usia' dengan tipe data tiny integer dan tidak boleh negatif
+            $table->timestamps(); // Membuat kolom 'created_at' dan 'updated_at'
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Membalikkan migrasi.
      */
     public function down(): void
     {
+        // Menghapus tabel 'mahasiswas'
         Schema::dropIfExists('mahasiswas');
     }
 };
