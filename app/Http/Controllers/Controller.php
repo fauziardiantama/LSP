@@ -40,7 +40,7 @@ class Controller extends BaseController
             $mahasiswa = Mahasiswa::find(request('edit'));
         }
         // Mengambil semua data mahasiswa
-        $mahasiswas = Mahasiswa::all();
+        $mahasiswas = Mahasiswa::orderBy('nim','desc')->get();
         // Mengembalikan view admin dengan data mahasiswa dan mahasiswa yang akan diedit (jika ada)
         return view('admin', compact('mahasiswas', 'mahasiswa'));
     }
