@@ -4,26 +4,55 @@
 
 @section('content')
         <main class="container">
-
-            <div class="row mb-3">
-                <div class="col-md-4">
+            <div class="row mb-5">
+                <div class="col-4"> 
                     <div class="card">
-                        <div class="card-body">
-                            Total: {{ $total }}
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                        <div class="align-self-center text-success">
+                                                <i class="fas fa-graduation-cap fa-2x" style="margin-right: 10px;"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                                <h3>{{ $total }}</h3>
+                                                <span>Mahasiswa</span>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-4"> 
                     <div class="card">
-                        <div class="card-body">
-                            Total Laki-Laki: {{ $totalMale }}
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                        <div class="align-self-center text-primary">
+                                                <i class="fas fa-mars fa-2x" style="margin-right: 10px;"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                                <h3>{{ $totalMale }}</h3>
+                                                <span>Laki-laki</span>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-4"> 
                     <div class="card">
-                        <div class="card-body">
-                            Total Perempuan: {{ $totalFemale }}
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                        <div class="align-self-center text-danger">
+                                                <i class="fas fa-venus fa-2x" style="margin-right: 10px;"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                                <h3>{{ $totalFemale }}</h3>
+                                                <span>Perempuan</span>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +68,8 @@
                                 <input type="text" class="form-control" placeholder="Search" name="search" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
-                                        <i class="bi bi-search"></i>
+                                        <!-- font awesome search icon -->
+                                        <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </div>

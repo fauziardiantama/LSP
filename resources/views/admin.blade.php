@@ -16,7 +16,7 @@
             </div>
         @endif
         {{-- Make form nice --}}
-        <div class="card mb-5" style="background-color: #b7b7b7;">
+        <div class="card mb-5">
             <div class="card-header">
                 {{-- Check if edit is set --}}
                 @if (request()->has('edit'))
