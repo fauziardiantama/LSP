@@ -4,20 +4,6 @@
 
 @section('content') <!-- Mengisi bagian konten dari layout -->
     <main class="container">
-        @if (session('success'))
-            <!-- Jika ada pesan sukses -->
-            <div class="alert alert-success">
-                {{ session('success') }} <!-- Menampilkan pesan sukses -->
-            </div>
-        @endif
-
-        @if (session('error'))
-            <!-- Jika ada pesan error -->
-            <div class="alert alert-danger">
-                {{ session('error') }} <!-- Menampilkan pesan error -->
-            </div>
-        @endif
-
         <div class="card mb-5">
             <div class="card-header">
                 @if (request()->has('edit'))
@@ -40,8 +26,8 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="nim" class="form-label">NIM</label>
-                        <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" placeholder="NIM"
-                            name="nim" value="{{ $mahasiswa->nim ?? old('nim') }}"
+                        <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim"
+                            placeholder="NIM" name="nim" value="{{ $mahasiswa->nim ?? old('nim') }}"
                             {{ request()->has('edit') ? 'readonly' : '' }}>
                         @error('nim')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -49,8 +35,8 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama"
-                            name="nama" value="{{ $mahasiswa->nama ?? old('nama') }}">
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
+                            placeholder="Nama" name="nama" value="{{ $mahasiswa->nama ?? old('nama') }}">
                         @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -58,15 +44,16 @@
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="alamat" nama="alamat">{{ $mahasiswa->alamat ?? old('alamat') }}</textarea>
+                    <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="alamat" name="alamat">{{ $mahasiswa->alamat ?? old('alamat') }}</textarea>
                     @error('alamat')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
-                    <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir"
-                        name="tgl_lahir" value="{{ $mahasiswa->tgl_lahir ?? old('tgl_lahir') }}" max="{{ now()->format('Y-m-d') }}">
+                    <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir"
+                        placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ $mahasiswa->tgl_lahir ?? old('tgl_lahir') }}"
+                        max="{{ now()->format('Y-m-d') }}">
                     @error('tgl_lahir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -88,8 +75,8 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="usia" class="form-label">Usia</label>
-                        <input type="number" class="form-control @error('usia') is-invalid @enderror" id="usia" placeholder="Usia"
-                            name="usia" value="{{ $mahasiswa->usia ?? old('usia') }}">
+                        <input type="number" class="form-control @error('usia') is-invalid @enderror" id="usia"
+                            placeholder="Usia" name="usia" value="{{ $mahasiswa->usia ?? old('usia') }}">
                         @error('usia')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -158,3 +145,29 @@
         </div>
     </main>
 @endsection
+
+@if (session('success'))
+    @section('custom-js')
+    <!-- Jika ada pesan sukses -->
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success'
+        })
+    </script> <!-- Menampilkan pesan sukses menggunakan SweetAlert -->
+    @endsection
+@endif
+
+@if (session('error'))
+    @section('custom-js')
+    <!-- Jika ada pesan error -->
+    <script>
+        Swal.fire({
+            title: 'Error!',
+            text: '{{ session('error') }}',
+            icon: 'error'
+        })
+    </script> <!-- Menampilkan pesan error menggunakan SweetAlert -->
+    @endsection
+@endif

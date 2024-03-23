@@ -16,23 +16,12 @@
    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-   <script src="https://unpkg.com/bs-brain@2.0.3/components/charts/chart-10/assets/controller/chart-10.js"></script>
-   
-   <!-- Script jQuery untuk mengatur jumbotron -->
-   <script>
-       $(document).ready(function() {
-           $(".jumbotron").click(function() {
-               $(this).fadeOut();
-           })
-       })
-   </script>
-   
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <!-- Mengatur padding body -->
    <style>
-    body {
-        padding-top: 100px; /* Sesuaikan nilai ini sesuai dengan tinggi navbar Anda */
-    }
+        body {
+            padding-top: 100px; /* Sesuaikan nilai ini sesuai dengan tinggi navbar Anda */
+        }
     </style>
     @yield('custom-css') <!-- Tempat untuk menambahkan CSS kustom -->
 </head>
